@@ -10,6 +10,23 @@
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.1.0-preview4.19579.2" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.1.0-preview4.19579.2" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.1.0-preview4.19579.2" PrivateAssets="all" />
+
+    <!-- Needed temporarily until the next Blazor WebAssembly preview release -->
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Mono" Version="3.2.0-preview1.20052.1" />
+
+    <!-- gRPC-Web packages -->
+    <PackageReference Include="Google.Protobuf" Version="3.11.2" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.27.0-dev202001100801" />
+    <PackageReference Include="Grpc.Net.Client.Web" Version="2.27.0-dev202001100801" />
+    <PackageReference Include="Grpc.Tools" Version="2.27.0-dev202001081219">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Share .proto file with backend server to ensure consistency. Alternatively you could copy it into this project. -->
+    <Protobuf Include="..\SampleBackendGrpcServer\Protos\weather.proto" />
   </ItemGroup>
 
 </Project>

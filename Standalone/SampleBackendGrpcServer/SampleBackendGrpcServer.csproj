@@ -9,7 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.24.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.27.0-dev202001100801" />
+    <PackageReference Include="Grpc.AspNetCore.Web" Version="2.27.0-dev202001100801" />
   </ItemGroup>
 
 </Project>

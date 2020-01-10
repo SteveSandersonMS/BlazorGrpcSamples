@@ -14,6 +14,7 @@ namespace SampleBackendGrpcServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -25,10 +26,14 @@ namespace SampleBackendGrpcServer
             }
 
             app.UseRouting();
+            app.UseCors();
+            app.UseGrpcWeb();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<WeatherForecastsService>();
+                endpoints.MapGrpcService<WeatherForecastsService>().EnableGrpcWeb()
+                    .RequireCors(cors => cors.AllowAnyHeader().AllowAnyMethod()
+                        .WithOrigins("http://localhost:54070", "https://localhost:44316"));
 
                 endpoints.MapGet("/", async context =>
                 {

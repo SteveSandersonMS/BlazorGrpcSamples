@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using SampleBackendGrpc;
+using BlazorGrpc;
 
 namespace SampleBackendGrpcServer.Services
 {
