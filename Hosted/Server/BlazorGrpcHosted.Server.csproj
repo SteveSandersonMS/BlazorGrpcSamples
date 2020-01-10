@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.27.0-dev202001100801" />
+    <PackageReference Include="Grpc.AspNetCore.Web" Version="2.27.0-dev202001100801" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="3.1.0-preview4.19579.2" />
   </ItemGroup>
 
