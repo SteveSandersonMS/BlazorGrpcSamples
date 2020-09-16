@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +34,11 @@ namespace SampleBackendGrpcServer
             {
                 endpoints.MapGrpcService<WeatherForecastsService>().EnableGrpcWeb()
                     .RequireCors(cors => cors.AllowAnyHeader().AllowAnyMethod()
-                        .WithOrigins("http://localhost:54070", "https://localhost:44316"));
+                        .SetIsOriginAllowed(c =>
+                        {
+                            // Allow any localhost
+                            return Uri.TryCreate(c, UriKind.Absolute, out var uri) && uri.IsLoopback;
+                        }));
 
                 endpoints.MapGet("/", async context =>
                 {
